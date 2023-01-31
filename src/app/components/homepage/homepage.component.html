@@ -1,0 +1,126 @@
+<div class="body">
+  <!-- header background -->
+  <div class="header">
+    <img
+      src="../../../assets/images/bg-header-desktop.svg"
+      alt="=header-image"
+    />
+  </div>
+  <!-- main-content -->
+  <div class="main">
+    <mat-dialog-content>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="onDialog()">
+          Add
+        </button>
+        <mat-form-field class="example-chip-list" appearance="fill">
+          <!-- <mat-label>Favorite jobApplications</mat-label> -->
+          <mat-chip-grid #chipGrid aria-label="Enter jobApplications">
+            <mat-chip-row
+              *ngFor="let job of jobApplications"
+              (removed)="remove(job)"
+              [editable]="true"
+              (edited)="edit(job, $event)"
+              [aria-description]="'press enter to edit ' + job.name"
+            >
+              {{ job.name }}
+              <button matChipRemove [attr.aria-label]="'remove ' + job.name">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+            <input
+              placeholder="Search jobs"
+              [matChipInputFor]="chipGrid"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)"
+              name="search_jobs"
+            />
+          </mat-chip-grid>
+        </mat-form-field>
+      </div>
+      <!--content box-->
+      <div class="contents">
+        <!-- <div class="left-side"></div> -->
+        <mat-card class="example-card" *ngFor="let job of newJob">
+          <mat-card-header>
+            <img
+              [src]="job.logo"
+              alt="photosnap"
+              mat-card-avatar
+              style="width: 5%; height: 5%"
+            />
+
+            <mat-card-title-group class="title-group">
+              <mat-card-subtitle class="card-title">
+                <mat-card-subtitle class="company">{{
+                  job.company
+                }}</mat-card-subtitle>
+                <mat-chip
+                  class="new"
+                  *ngIf="job.new"
+                  id="btn-1"
+                  style="background-color: hsl(180, 29%, 50%); color: white"
+                >
+                  new
+                </mat-chip>
+                <mat-chip
+                  class="new"
+                  *ngIf="job.featured"
+                  id="btn-2"
+                  style="background-color: hsl(180, 29%, 50%); color: white"
+                >
+                  Featured
+                </mat-chip>
+              </mat-card-subtitle>
+
+              <mat-card-subtitle>
+                <mat-card-title class="role">{{ job.role }}</mat-card-title>
+
+                <span>{{ job.postedAt }}</span>
+                <span class="post">{{ job.contract }}</span>
+                <span class="post">{{ job.location }}</span>
+              </mat-card-subtitle>
+            </mat-card-title-group>
+
+            <div class="side">
+              <!-- <mat-dialog-actions align="end"> -->
+              <mat-chip class="chip">{{ job.level }}</mat-chip>
+              <mat-chip class="chip" *ngFor="let launguage of job.languages">{{
+                launguage
+              }}</mat-chip>
+
+              <mat-chip class="chip" *ngFor="let launguage of job.tools">{{
+                launguage
+              }}</mat-chip>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="editJob(job)">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="clone(job)">
+                <mat-icon>Clone</mat-icon>
+                <span>Clone</span>
+              </button>
+              <button mat-menu-item (click)="deleteJob(job.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+
+            <!-- </mat-dialog-actions> -->
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </mat-dialog-content>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "newJobs": [
+    {
+      "company": "Photosnap",
+      "logo": "../../../assets/images/photosnap.svg",
+      "new": true,
+      "featured": true,
+      "position": "Senior Frontend Developer",
+      "role": "Frontend",
+      "level": "Midweight-1",
+      "postedAt": "1d ago",
+      "contract": "Full Time",
+      "location": "India only",
+      "languages": [
+        "Javascript",
+        "Python"
+      ],
+      "tools": [
+        "Angular",
+        "node"
+      ],
+      "id": 1
+    }
+  ]
+}

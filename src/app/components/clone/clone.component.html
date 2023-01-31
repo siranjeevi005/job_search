@@ -1,0 +1,119 @@
+<form class="example-form" (ngSubmit)="onSumbit()" [formGroup]="reactiveForms">
+  <mat-form-field class="example-full-width">
+    <mat-label>Enter the company name</mat-label>
+    <input matInput formControlName="company" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Logo URL</mat-label>
+    <input matInput formControlName="logo" />
+  </mat-form-field>
+
+  <mat-card class="result">
+    <mat-card-content>
+      <!-- <h2 class="example-h2">New , Feature</h2> -->
+
+      <section class="example-section">
+        <mat-checkbox class="example-margin" formControlName="new">
+          New
+        </mat-checkbox>
+        <mat-checkbox class="example-margin" formControlName="featured">
+          Featured
+        </mat-checkbox>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Position</mat-label>
+    <input matInput formControlName="position" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Role</mat-label>
+    <input matInput formControlName="role" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Position Level</mat-label>
+    <mat-select formControlName="level">
+      <mat-option
+        *ngFor="let jobLevel of jobLevelType"
+        [value]="jobLevel.value"
+      >
+        {{ jobLevel.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Posted At</mat-label>
+    <input matInput formControlName="postedAt" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Contract</mat-label>
+    <input matInput formControlName="contract" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Location</mat-label>
+    <input matInput formControlName="location" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Launguages known</mat-label>
+    <mat-select formControlName="languages" multiple>
+      <mat-select-trigger>
+        {{languages.value?.[0] || ''}}
+        <span
+          *ngIf="(languages.value?.length || 0) > 1"
+          class="example-additional-selection"
+        >
+          (+{{ (languages.value?.length || 0) - 1 }}
+          {{ languages.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let language of languagesList" [value]="language">
+        {{ language }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Toppings</mat-label>
+    <mat-select formControlName="tools" multiple>
+      <mat-select-trigger>
+        {{toppings.value?.[0] || ''}}
+        <span
+          *ngIf="(toppings.value?.length || 0) > 1"
+          class="example-additional-selection"
+        >
+          (+{{ (toppings.value?.length || 0) - 1 }}
+          {{ toppings.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
+        topping
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button
+      type="submit"
+      mat-raised-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+    >
+      Add
+    </button>
+    <!-- <button mat-raised-button type="button">Fill value</button> -->
+  </mat-dialog-actions>
+</form>
+
+<!-- <app-homepage
+    *ngFor="let job of newJobs"
+    [newJobcComponent]="job"
+  ></app-homepage> -->

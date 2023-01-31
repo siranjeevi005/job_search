@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300&display=swap");
+
+html {
+  font-family: "League Spartan", sans-serif;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+.header img {
+  width: 100%;
+  background-color: hsl(180, 29%, 50%);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1%;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.example-chip-list {
+  width: 60%;
+}
+
+.example-card {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 40px;
+}
+
+.mat-card-header {
+  .image {
+    width: 380px;
+    height: 380px;
+  }
+}
+.title-group {
+  margin-left: 2%;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-subtitle .post {
+  margin-left: 15px;
+}
+
+.role {
+  color: black;
+}
+
+mat-card-subtitle .new {
+  margin-left: 10px;
+}
+
+mat-card-subtitle .company {
+  color: hsl(180, 8%, 52%);
+  font-weight: 500;
+}
+
+.side {
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 375px) {
+  .side {
+    display: flex;
+    flex-direction: row;
+    // flex-direction: column;
+    // margin-top: 40%;
+    // margin-left: -90%;
+    // justify-content: flex-start;
+  }
+
+  // .main {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  // .contents {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  mat-card-header {
+    display: flex;
+    flex-direction: column;
+  }
+}
